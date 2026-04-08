@@ -4,7 +4,7 @@ import { Calendar, Clock } from 'lucide-react';
 import { toast } from 'sonner';
 
 const BookingSection = () => {
-  const { t } = useLang();
+  const { t, lang } = useLang();
   const [form, setForm] = useState({ date: '', time: '', service: '', name: '', phone: '', email: '' });
 
   const serviceOptions = [
@@ -18,7 +18,7 @@ const BookingSection = () => {
     t.services.office.title,
   ];
 
-  const { lang } = useLang();
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     toast.success(lang === 'ar' ? 'تم حجز الموعد بنجاح!' : 'Rendez-vous réservé avec succès !');

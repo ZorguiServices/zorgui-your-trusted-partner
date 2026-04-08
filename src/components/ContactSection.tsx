@@ -4,7 +4,7 @@ import { Send } from 'lucide-react';
 import { toast } from 'sonner';
 
 const ContactSection = () => {
-  const { t } = useLang();
+  const { t, lang } = useLang();
   const [form, setForm] = useState({ name: '', phone: '', email: '', service: '', message: '' });
 
   const serviceOptions = [
@@ -18,7 +18,7 @@ const ContactSection = () => {
     t.services.office.title,
   ];
 
-  const { lang } = useLang();
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     toast.success(lang === 'ar' ? 'تم إرسال طلبك بنجاح! سيتم الاتصال بك قريباً' : 'Votre demande a été envoyée ! Nous vous contacterons bientôt');
