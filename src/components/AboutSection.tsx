@@ -1,6 +1,6 @@
 import { useLang } from '@/i18n/LanguageContext';
 import { User, Award, Eye } from 'lucide-react';
-import logo from '@/assets/logo.png';
+import ownerPhoto from '@/assets/owner-photo.png';
 
 const AboutSection = () => {
   const { t } = useLang();
