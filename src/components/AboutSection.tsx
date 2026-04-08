@@ -1,6 +1,6 @@
 import { useLang } from '@/i18n/LanguageContext';
 import { User, Award, Eye } from 'lucide-react';
-import logo from '@/assets/logo.png';
+import ownerPhoto from '@/assets/owner-photo.png';
 
 const AboutSection = () => {
   const { t } = useLang();
@@ -12,7 +12,7 @@ const AboutSection = () => {
         <div className="w-20 h-1 bg-gold mx-auto mb-10 rounded-full" />
 
         <div className="bg-card rounded-2xl p-8 shadow-card text-center">
-          <img src={logo} alt={t.about.name} className="w-28 h-28 mx-auto mb-6 object-contain" />
+          <img src={ownerPhoto} alt={t.about.name} className="w-32 h-32 mx-auto mb-6 object-cover rounded-full border-4 border-gold shadow-gold" />
           <h3 className="text-2xl font-bold text-primary mb-2">{t.about.name}</h3>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
             <span className="flex items-center gap-2 text-gold font-semibold">
