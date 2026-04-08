@@ -1,6 +1,6 @@
 import { useLang } from '@/i18n/LanguageContext';
 import logo from '@/assets/logo.png';
-import { MapPin, Phone, MessageCircle, Mail } from 'lucide-react';
+import { MapPin, Phone, MessageCircle, Mail, Facebook } from 'lucide-react';
 
 const Footer = () => {
   const { t } = useLang();
@@ -29,7 +29,11 @@ const Footer = () => {
             </div>
             <div className="flex items-center justify-center gap-2 text-primary-foreground/80">
               <Mail className="w-5 h-5 text-gold" />
-              <a href="mailto:contact@zorgui-services.tn" className="hover:text-gold transition">contact@zorgui-services.tn</a>
+              <a href="mailto:zorguimohamedsalah@gmail.com" className="hover:text-gold transition">zorguimohamedsalah@gmail.com</a>
+            </div>
+            <div className="flex items-center justify-center gap-2 text-primary-foreground/80">
+              <Facebook className="w-5 h-5 text-gold" />
+              <a href="https://www.facebook.com/share/1CNqnx3DA1/" target="_blank" rel="noopener noreferrer" className="hover:text-gold transition">Facebook</a>
             </div>
           </div>
 
