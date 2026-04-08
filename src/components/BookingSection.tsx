@@ -18,9 +18,10 @@ const BookingSection = () => {
     t.services.office.title,
   ];
 
+  const { lang } = useLang();
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    toast.success(t.lang === 'ar' ? 'تم حجز الموعد بنجاح!' : 'Rendez-vous réservé avec succès !');
+    toast.success(lang === 'ar' ? 'تم حجز الموعد بنجاح!' : 'Rendez-vous réservé avec succès !');
     setForm({ date: '', time: '', service: '', name: '', phone: '', email: '' });
   };
 

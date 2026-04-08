@@ -18,9 +18,10 @@ const ContactSection = () => {
     t.services.office.title,
   ];
 
+  const { lang } = useLang();
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    toast.success(t.lang === 'ar' ? 'تم إرسال طلبك بنجاح! سيتم الاتصال بك قريباً' : 'Votre demande a été envoyée ! Nous vous contacterons bientôt');
+    toast.success(lang === 'ar' ? 'تم إرسال طلبك بنجاح! سيتم الاتصال بك قريباً' : 'Votre demande a été envoyée ! Nous vous contacterons bientôt');
     setForm({ name: '', phone: '', email: '', service: '', message: '' });
   };
 
