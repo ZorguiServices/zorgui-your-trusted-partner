@@ -1,6 +1,6 @@
 import { useLang } from '@/i18n/LanguageContext';
 import logo from '@/assets/logo.png';
-import { MapPin, Phone, MessageCircle, Mail } from 'lucide-react';
+import { MapPin, Phone, MessageCircle, Mail, Facebook } from 'lucide-react';
 
 const Footer = () => {
   const { t } = useLang();
