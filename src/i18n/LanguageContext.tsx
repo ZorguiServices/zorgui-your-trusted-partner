@@ -3,7 +3,7 @@ import { translations, type Lang } from './translations';
 
 interface LanguageContextType {
   lang: Lang;
-  t: typeof translations['ar'];
+  t: typeof translations['ar'] | typeof translations['fr'];
   toggleLang: () => void;
   dir: 'rtl' | 'ltr';
 }
