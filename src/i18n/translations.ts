@@ -64,6 +64,10 @@ export const translations = {
         title: 'خدمات مكتبية',
         items: ['طباعة / Scan', 'CV', 'استمارات', 'تجليد ملفات Spirales'],
       },
+      readMore: 'اقرأ المزيد',
+      chooseService: 'اختر خدمة',
+      choose: 'اختيار',
+      selected: 'تم الاختيار ✓',
     },
     trust: {
       title: 'عناصر الثقة',
@@ -194,6 +198,10 @@ export const translations = {
         title: 'Services Bureau',
         items: ['Impression / Scan', 'CV', 'Formulaires', 'Reliure spirales'],
       },
+      readMore: 'Lire la suite',
+      chooseService: 'Choisissez un service',
+      choose: 'Choisir',
+      selected: 'Sélectionné ✓',
     },
     trust: {
       title: 'Confiance',
