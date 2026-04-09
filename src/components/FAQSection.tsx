@@ -33,7 +33,7 @@ const colorClasses = [
 
 const FAQSection = () => {
   const { lang } = useLang();
-  const { ref, isInView } = useInView({ threshold: 0.1 });
+  const { ref, inView } = useInView(0.1);
   const items = faqData[lang];
   const title = lang === 'ar' ? 'الأسئلة المتكررة' : 'Questions Fréquentes';
 
