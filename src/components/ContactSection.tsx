@@ -1,11 +1,14 @@
 import { useLang } from '@/i18n/LanguageContext';
-import { useState } from 'react';
-import { Send } from 'lucide-react';
+import { useState, useRef } from 'react';
+import { Send, Loader2 } from 'lucide-react';
 import { toast } from 'sonner';
+import { supabase } from '@/integrations/supabase/client';
 
 const ContactSection = () => {
   const { t, lang } = useLang();
   const [form, setForm] = useState({ name: '', phone: '', email: '', service: '', message: '' });
+  const [loading, setLoading] = useState(false);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const serviceOptions = [
     t.services.admin.title,
@@ -18,11 +21,48 @@ const ContactSection = () => {
     t.services.office.title,
   ];
 
+  const uploadFiles = async (files: FileList): Promise<string[]> => {
+    const urls: string[] = [];
+    for (const file of Array.from(files)) {
+      const fileName = `contact/${Date.now()}-${file.name}`;
+      const { error } = await supabase.storage.from('form-attachments').upload(fileName, file);
+      if (!error) {
+        const { data } = supabase.storage.from('form-attachments').getPublicUrl(fileName);
+        urls.push(data.publicUrl);
+      }
+    }
+    return urls;
+  };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast.success(lang === 'ar' ? 'تم إرسال طلبك بنجاح! سيتم الاتصال بك قريباً' : 'Votre demande a été envoyée ! Nous vous contacterons bientôt');
-    setForm({ name: '', phone: '', email: '', service: '', message: '' });
+    setLoading(true);
+    try {
+      let attachmentUrls: string[] = [];
+      const files = fileInputRef.current?.files;
+      if (files && files.length > 0) {
+        attachmentUrls = await uploadFiles(files);
+      }
+
+      const { error } = await supabase.functions.invoke('send-email', {
+        body: {
+          type: 'contact',
+          ...form,
+          attachmentUrls,
+        },
+      });
+
+      if (error) throw error;
+
+      toast.success(lang === 'ar' ? 'تم إرسال طلبك بنجاح! سيتم الاتصال بك قريباً' : 'Votre demande a été envoyée ! Nous vous contacterons bientôt');
+      setForm({ name: '', phone: '', email: '', service: '', message: '' });
+      if (fileInputRef.current) fileInputRef.current.value = '';
+    } catch (err) {
+      console.error(err);
+      toast.error(lang === 'ar' ? 'حدث خطأ أثناء الإرسال' : 'Erreur lors de l\'envoi');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -63,10 +103,10 @@ const ContactSection = () => {
           />
           <div>
             <label className="block text-sm text-muted-foreground mb-2">{t.contact.file}</label>
-            <input type="file" accept=".pdf,.jpg,.png" className="text-sm" />
+            <input ref={fileInputRef} type="file" accept=".pdf,.jpg,.png" className="text-sm" />
           </div>
-          <button type="submit" className="w-full py-4 bg-gold text-secondary-foreground font-bold text-lg rounded-lg hover:bg-gold-light transition-all flex items-center justify-center gap-2 shadow-gold hover:scale-[1.02]">
-            <Send className="w-5 h-5" />
+          <button type="submit" disabled={loading} className="w-full py-4 bg-gold text-secondary-foreground font-bold text-lg rounded-lg hover:bg-gold-light transition-all flex items-center justify-center gap-2 shadow-gold hover:scale-[1.02] disabled:opacity-60">
+            {loading ? <Loader2 className="w-5 h-5 animate-spin" /> : <Send className="w-5 h-5" />}
             {t.contact.send}
           </button>
         </form>
