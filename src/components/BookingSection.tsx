@@ -1,11 +1,14 @@
 import { useLang } from '@/i18n/LanguageContext';
-import { useState } from 'react';
-import { Calendar, Clock } from 'lucide-react';
+import { useState, useRef } from 'react';
+import { Calendar, Clock, Loader2 } from 'lucide-react';
 import { toast } from 'sonner';
+import { supabase } from '@/integrations/supabase/client';
 
 const BookingSection = () => {
   const { t, lang } = useLang();
   const [form, setForm] = useState({ date: '', time: '', service: '', name: '', phone: '', email: '' });
+  const [loading, setLoading] = useState(false);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const serviceOptions = [
     t.services.admin.title,
@@ -18,11 +21,48 @@ const BookingSection = () => {
     t.services.office.title,
   ];
 
+  const uploadFiles = async (files: FileList): Promise<string[]> => {
+    const urls: string[] = [];
+    for (const file of Array.from(files)) {
+      const fileName = `booking/${Date.now()}-${file.name}`;
+      const { error } = await supabase.storage.from('form-attachments').upload(fileName, file);
+      if (!error) {
+        const { data } = supabase.storage.from('form-attachments').getPublicUrl(fileName);
+        urls.push(data.publicUrl);
+      }
+    }
+    return urls;
+  };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast.success(lang === 'ar' ? 'تم حجز الموعد بنجاح!' : 'Rendez-vous réservé avec succès !');
-    setForm({ date: '', time: '', service: '', name: '', phone: '', email: '' });
+    setLoading(true);
+    try {
+      let attachmentUrls: string[] = [];
+      const files = fileInputRef.current?.files;
+      if (files && files.length > 0) {
+        attachmentUrls = await uploadFiles(files);
+      }
+
+      const { error } = await supabase.functions.invoke('send-email', {
+        body: {
+          type: 'booking',
+          ...form,
+          attachmentUrls,
+        },
+      });
+
+      if (error) throw error;
+
+      toast.success(lang === 'ar' ? 'تم حجز الموعد بنجاح!' : 'Rendez-vous réservé avec succès !');
+      setForm({ date: '', time: '', service: '', name: '', phone: '', email: '' });
+      if (fileInputRef.current) fileInputRef.current.value = '';
+    } catch (err) {
+      console.error(err);
+      toast.error(lang === 'ar' ? 'حدث خطأ أثناء الحجز' : 'Erreur lors de la réservation');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -62,10 +102,10 @@ const BookingSection = () => {
             className="w-full px-4 py-3 rounded-lg border border-border bg-background focus:ring-2 focus:ring-gold outline-none transition" />
           <div>
             <label className="block text-sm text-muted-foreground mb-2">{t.booking.uploadFiles}</label>
-            <input type="file" accept=".pdf,.jpg,.png" multiple className="text-sm" />
+            <input ref={fileInputRef} type="file" accept=".pdf,.jpg,.png" multiple className="text-sm" />
           </div>
-          <button type="submit" className="w-full py-4 bg-primary text-primary-foreground font-bold text-lg rounded-lg hover:bg-navy-light transition-all flex items-center justify-center gap-2 hover:scale-[1.02]">
-            <Calendar className="w-5 h-5" />
+          <button type="submit" disabled={loading} className="w-full py-4 bg-primary text-primary-foreground font-bold text-lg rounded-lg hover:bg-navy-light transition-all flex items-center justify-center gap-2 hover:scale-[1.02] disabled:opacity-60">
+            {loading ? <Loader2 className="w-5 h-5 animate-spin" /> : <Calendar className="w-5 h-5" />}
             {t.booking.submit}
           </button>
         </form>
