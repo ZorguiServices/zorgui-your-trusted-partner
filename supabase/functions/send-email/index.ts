@@ -11,11 +11,14 @@ Deno.serve(async (req) => {
   }
 
   try {
-    const RESEND_API_KEY = Deno.env.get('RESEND_API_KEY');
+    const RESEND_API_KEY = Deno.env.get('RESEND_API_KEY_1') || Deno.env.get('RESEND_API_KEY');
     const LOVABLE_API_KEY = Deno.env.get('LOVABLE_API_KEY');
     
-    if (!RESEND_API_KEY || !LOVABLE_API_KEY) {
-      throw new Error('Missing API keys');
+    if (!RESEND_API_KEY) {
+      throw new Error('RESEND_API_KEY is not configured');
+    }
+    if (!LOVABLE_API_KEY) {
+      throw new Error('LOVABLE_API_KEY is not configured');
     }
 
     const { type, name, phone, email, service, message, date, time, attachmentUrls } = await req.json();
