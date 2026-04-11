@@ -89,7 +89,7 @@ Deno.serve(async (req) => {
       },
       body: JSON.stringify({
         from: 'Zorgui Services <onboarding@resend.dev>',
-        to: ['zorguimohamedsalah@gmail.com'],
+        to: ['zorguiweblab@gmail.com'],
         subject,
         html,
       }),
