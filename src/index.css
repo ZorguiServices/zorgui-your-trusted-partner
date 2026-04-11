@@ -159,3 +159,121 @@
 .animate-float {
   animation: float 3s ease-in-out infinite;
 }
+
+/* Scroll Reveal */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+
+.scroll-reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.scroll-reveal-left {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+
+.scroll-reveal-left.revealed {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.scroll-reveal-right {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+
+.scroll-reveal-right.revealed {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.scroll-reveal-scale {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.scroll-reveal-scale.revealed {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Enhanced Hover Effects */
+.hover-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px -12px hsl(var(--primary) / 0.2);
+}
+
+.hover-glow {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-glow:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 30px hsl(var(--gold) / 0.3), 0 10px 30px -10px hsl(var(--primary) / 0.2);
+}
+
+.hover-border-gold {
+  border: 2px solid transparent;
+  transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-border-gold:hover {
+  border-color: hsl(var(--gold));
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-gold);
+}
+
+/* Typing cursor */
+.typing-cursor::after {
+  content: '|';
+  animation: blink 0.8s step-end infinite;
+  color: hsl(var(--gold));
+  font-weight: 300;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Toast slide-in animation */
+@keyframes toast-slide-in {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes toast-slide-out {
+  from { transform: translateX(0); opacity: 1; }
+  to { transform: translateX(100%); opacity: 0; }
+}
+
+[data-sonner-toast] {
+  animation: toast-slide-in 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+[data-sonner-toast][data-removed="true"] {
+  animation: toast-slide-out 0.3s ease-in !important;
+}
+
+/* Counter pulse on complete */
+@keyframes counter-pop {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
+
+.counter-done {
+  animation: counter-pop 0.4s ease-out;
+}
