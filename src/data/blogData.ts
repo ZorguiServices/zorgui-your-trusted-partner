@@ -100,7 +100,7 @@ export const blogPosts: BlogPost[] = [
   {
     id: 'visa-rejection',
     category: 'visa',
-    image: blogVisa,
+    image: blogVisa2,
     ar: {
       title: 'أهم أسباب رفض الفيزا وكيف تتجنبها',
       excerpt: 'تعرّف على الأسباب الشائعة لرفض التأشيرة وكيف تتفاداها.',
@@ -198,7 +198,7 @@ export const blogPosts: BlogPost[] = [
   {
     id: 'work-case-win',
     category: 'work',
-    image: blogWork,
+    image: blogWork2,
     ar: {
       title: 'كيف تربح قضية شغل؟',
       excerpt: 'خطوات عملية لتحضير قضية شغل ناجحة.',
@@ -296,7 +296,7 @@ export const blogPosts: BlogPost[] = [
   {
     id: 'social-recover-rights',
     category: 'social',
-    image: blogSocial,
+    image: blogSocial2,
     ar: {
       title: 'كيف تسترجع مستحقاتك من الضمان الاجتماعي؟',
       excerpt: 'خطوات عملية لاسترجاع حقوقك في التعويضات والجرايات.',
@@ -394,7 +394,7 @@ export const blogPosts: BlogPost[] = [
   {
     id: 'students-motivation-letter',
     category: 'students',
-    image: blogStudents,
+    image: blogStudents2,
     ar: {
       title: 'كيف تكتب Lettre de motivation ناجحة؟',
       excerpt: 'نصائح عملية لكتابة رسالة تحفيزية تلفت الانتباه.',
@@ -492,7 +492,7 @@ export const blogPosts: BlogPost[] = [
   {
     id: 'admin-commercial-register',
     category: 'admin',
-    image: blogAdmin,
+    image: blogAdmin2,
     ar: {
       title: 'كل ما تحتاج معرفته عن السجل التجاري',
       excerpt: 'دليل شامل لاستخراج وتجديد السجل التجاري في تونس.',
