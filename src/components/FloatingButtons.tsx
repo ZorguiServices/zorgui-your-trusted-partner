@@ -8,7 +8,7 @@ const FloatingButtons = () => {
 
   useEffect(() => {
     const onScroll = () => setShowTop(window.scrollY > 400);
-    window.addEventListener('scroll', onScroll);
+    window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
@@ -30,18 +30,19 @@ const FloatingButtons = () => {
         href="https://wa.me/21698284858"
         target="_blank"
         rel="noopener noreferrer"
-        className="fixed bottom-6 start-6 z-50 w-14 h-14 bg-emerald-500 text-card rounded-full flex items-center justify-center shadow-lg hover:bg-emerald-600 transition-all hover:scale-110"
+        className="fixed bottom-6 start-6 z-50 w-14 h-14 bg-emerald-500 text-card rounded-full flex items-center justify-center shadow-lg hover:bg-emerald-600 transition-all hover:scale-110 animate-pulse"
         aria-label="WhatsApp"
+        style={{ animationDuration: '3s' }}
       >
         <MessageCircle className="w-7 h-7" />
       </a>
 
       {/* Nav arrows */}
-      <div className="fixed bottom-6 end-6 z-50 flex flex-col gap-2">
+      <div className="fixed bottom-6 end-6 z-50 flex flex-col gap-3">
         {showTop && (
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="w-12 h-12 bg-primary text-primary-foreground rounded-full flex items-center justify-center shadow-lg hover:bg-navy-light transition-all hover:scale-110"
+            className="w-12 h-12 bg-primary/90 backdrop-blur-sm text-primary-foreground rounded-full flex items-center justify-center shadow-lg hover:bg-navy-light transition-all hover:scale-110"
             aria-label="Scroll to top"
           >
             <ArrowUp className="w-5 h-5" />
