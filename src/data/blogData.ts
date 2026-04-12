@@ -1,8 +1,13 @@
 import blogVisa from '@/assets/blog-visa.jpg';
+import blogVisa2 from '@/assets/blog-visa-2.jpg';
 import blogWork from '@/assets/blog-work.jpg';
+import blogWork2 from '@/assets/blog-work-2.jpg';
 import blogSocial from '@/assets/blog-social.jpg';
+import blogSocial2 from '@/assets/blog-social-2.jpg';
 import blogStudents from '@/assets/blog-students.jpg';
+import blogStudents2 from '@/assets/blog-students-2.jpg';
 import blogAdmin from '@/assets/blog-admin.jpg';
+import blogAdmin2 from '@/assets/blog-admin-2.jpg';
 
 export type BlogCategory = 'visa' | 'work' | 'social' | 'students' | 'admin';
 
@@ -95,7 +100,7 @@ export const blogPosts: BlogPost[] = [
   {
     id: 'visa-rejection',
     category: 'visa',
-    image: blogVisa,
+    image: blogVisa2,
     ar: {
       title: 'أهم أسباب رفض الفيزا وكيف تتجنبها',
       excerpt: 'تعرّف على الأسباب الشائعة لرفض التأشيرة وكيف تتفاداها.',
@@ -193,7 +198,7 @@ export const blogPosts: BlogPost[] = [
   {
     id: 'work-case-win',
     category: 'work',
-    image: blogWork,
+    image: blogWork2,
     ar: {
       title: 'كيف تربح قضية شغل؟',
       excerpt: 'خطوات عملية لتحضير قضية شغل ناجحة.',
@@ -291,7 +296,7 @@ export const blogPosts: BlogPost[] = [
   {
     id: 'social-recover-rights',
     category: 'social',
-    image: blogSocial,
+    image: blogSocial2,
     ar: {
       title: 'كيف تسترجع مستحقاتك من الضمان الاجتماعي؟',
       excerpt: 'خطوات عملية لاسترجاع حقوقك في التعويضات والجرايات.',
@@ -389,7 +394,7 @@ export const blogPosts: BlogPost[] = [
   {
     id: 'students-motivation-letter',
     category: 'students',
-    image: blogStudents,
+    image: blogStudents2,
     ar: {
       title: 'كيف تكتب Lettre de motivation ناجحة؟',
       excerpt: 'نصائح عملية لكتابة رسالة تحفيزية تلفت الانتباه.',
@@ -487,7 +492,7 @@ export const blogPosts: BlogPost[] = [
   {
     id: 'admin-commercial-register',
     category: 'admin',
-    image: blogAdmin,
+    image: blogAdmin2,
     ar: {
       title: 'كل ما تحتاج معرفته عن السجل التجاري',
       excerpt: 'دليل شامل لاستخراج وتجديد السجل التجاري في تونس.',
