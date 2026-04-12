@@ -1,8 +1,13 @@
 import blogVisa from '@/assets/blog-visa.jpg';
+import blogVisa2 from '@/assets/blog-visa-2.jpg';
 import blogWork from '@/assets/blog-work.jpg';
+import blogWork2 from '@/assets/blog-work-2.jpg';
 import blogSocial from '@/assets/blog-social.jpg';
+import blogSocial2 from '@/assets/blog-social-2.jpg';
 import blogStudents from '@/assets/blog-students.jpg';
+import blogStudents2 from '@/assets/blog-students-2.jpg';
 import blogAdmin from '@/assets/blog-admin.jpg';
+import blogAdmin2 from '@/assets/blog-admin-2.jpg';
 
 export type BlogCategory = 'visa' | 'work' | 'social' | 'students' | 'admin';
 
