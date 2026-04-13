@@ -12,8 +12,8 @@ const HeroSection = () => {
     <section id="hero" className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
       <div className="absolute inset-0">
         <img src={heroBg} alt="" className="w-full h-full object-cover scale-105" width={1920} height={1080} />
-        <div className="absolute inset-0 gradient-hero opacity-90" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,hsl(var(--navy-dark)/0.4)_100%)]" />
+        <div className="absolute inset-0 gradient-hero opacity-50" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,hsl(var(--navy-dark)/0.2)_100%)]" />
       </div>
 
       {/* Decorative elements */}
