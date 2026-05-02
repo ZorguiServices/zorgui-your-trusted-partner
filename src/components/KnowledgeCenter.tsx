@@ -16,10 +16,13 @@ import {
 type CategoryKey = 'social' | 'visa' | 'work' | 'students' | 'admin';
 type ContentType = 'pdf' | 'infographic';
 type Label = 'free' | 'paid' | 'new' | 'popular';
+type GuideKey =
+  | 'retirement' | 'retirementPro' | 'visa' | 'visaPro' | 'workRights' | 'university'
+  | 'retirementSteps' | 'visaSteps' | 'workerRights' | 'adminFile';
 
 interface Guide {
   id: string;
-  key: keyof ReturnType<typeof useLang>['t']['knowledge']['guides'];
+  key: GuideKey;
   category: CategoryKey;
   type: ContentType;
   labels: Label[];
