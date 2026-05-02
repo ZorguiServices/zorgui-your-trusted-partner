@@ -3,7 +3,7 @@ import logo from '@/assets/logo.png';
 import { useState, useEffect } from 'react';
 import { Menu, X, Globe } from 'lucide-react';
 
-const sectionIds = ['#hero', '#services', '#about', '#booking', '#tracking', '#blog', '#contact'];
+const sectionIds = ['#hero', '#services', '#knowledge', '#about', '#booking', '#tracking', '#blog', '#contact'];
 
 const Header = () => {
   const { t, toggleLang, lang } = useLang();
@@ -14,6 +14,7 @@ const Header = () => {
   const navItems = [
     { label: t.nav.home, href: '#hero' },
     { label: t.nav.services, href: '#services' },
+    { label: t.nav.knowledge, href: '#knowledge' },
     { label: t.nav.about, href: '#about' },
     { label: t.nav.booking, href: '#booking' },
     { label: t.nav.tracking, href: '#tracking' },
