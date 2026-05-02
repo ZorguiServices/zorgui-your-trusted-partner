@@ -9,6 +9,7 @@ import CTASection from '@/components/CTASection';
 import BookingSection from '@/components/BookingSection';
 import TrackingSection from '@/components/TrackingSection';
 import BlogSection from '@/components/BlogSection';
+import KnowledgeCenter from '@/components/KnowledgeCenter';
 import AboutSection from '@/components/AboutSection';
 import ContactSection from '@/components/ContactSection';
 import Footer from '@/components/Footer';
@@ -30,6 +31,7 @@ const Index = () => {
       <TrackingSection />
       <FAQSection />
       <BlogSection />
+      <KnowledgeCenter />
       <AboutSection />
       <ContactSection />
       <Footer />
