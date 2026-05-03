@@ -12,6 +12,10 @@ import {
   FileText, Image as ImageIcon, Heart, Plane, Briefcase, GraduationCap, FolderOpen,
   Share2, TrendingUp, Sparkles, Facebook,
 } from 'lucide-react';
+import infographicRetirement from '@/assets/infographic-retirement.jpg';
+import infographicVisa from '@/assets/infographic-visa.jpg';
+import infographicWorker from '@/assets/infographic-worker-rights.jpg';
+import infographicAdmin from '@/assets/infographic-admin-file.jpg';
 
 type CategoryKey = 'social' | 'visa' | 'work' | 'students' | 'admin';
 type ContentType = 'pdf' | 'infographic';
@@ -29,6 +33,7 @@ interface Guide {
   price?: number;
   downloads: number;
   fileUrl?: string; // free PDF (placeholder)
+  image?: string; // infographic preview image
   Icon: typeof FileText;
   gradient: string;
 }
@@ -40,10 +45,10 @@ const guides: Guide[] = [
   { id: 'visaPro', key: 'visaPro', category: 'visa', type: 'pdf', labels: ['paid', 'popular'], price: 5, downloads: 410, Icon: Plane, gradient: 'from-amber-500/80 to-amber-700/80' },
   { id: 'workRights', key: 'workRights', category: 'work', type: 'pdf', labels: ['free'], downloads: 760, fileUrl: '/guides/work-rights.pdf', Icon: Briefcase, gradient: 'from-emerald-500/80 to-emerald-700/80' },
   { id: 'university', key: 'university', category: 'students', type: 'pdf', labels: ['free', 'new'], downloads: 540, fileUrl: '/guides/university.pdf', Icon: GraduationCap, gradient: 'from-violet-500/80 to-violet-700/80' },
-  { id: 'retirementSteps', key: 'retirementSteps', category: 'social', type: 'infographic', labels: ['free', 'popular'], downloads: 1520, Icon: Heart, gradient: 'from-rose-400/80 to-pink-600/80' },
-  { id: 'visaSteps', key: 'visaSteps', category: 'visa', type: 'infographic', labels: ['free'], downloads: 890, Icon: Plane, gradient: 'from-sky-400/80 to-blue-600/80' },
-  { id: 'workerRights', key: 'workerRights', category: 'work', type: 'infographic', labels: ['free', 'new'], downloads: 670, Icon: Briefcase, gradient: 'from-emerald-400/80 to-teal-600/80' },
-  { id: 'adminFile', key: 'adminFile', category: 'admin', type: 'infographic', labels: ['free'], downloads: 430, Icon: FolderOpen, gradient: 'from-orange-400/80 to-amber-600/80' },
+  { id: 'retirementSteps', key: 'retirementSteps', category: 'social', type: 'infographic', labels: ['free', 'popular'], downloads: 1520, image: infographicRetirement, Icon: Heart, gradient: 'from-rose-400/80 to-pink-600/80' },
+  { id: 'visaSteps', key: 'visaSteps', category: 'visa', type: 'infographic', labels: ['free'], downloads: 890, image: infographicVisa, Icon: Plane, gradient: 'from-sky-400/80 to-blue-600/80' },
+  { id: 'workerRights', key: 'workerRights', category: 'work', type: 'infographic', labels: ['free', 'new'], downloads: 670, image: infographicWorker, Icon: Briefcase, gradient: 'from-emerald-400/80 to-teal-600/80' },
+  { id: 'adminFile', key: 'adminFile', category: 'admin', type: 'infographic', labels: ['free'], downloads: 430, image: infographicAdmin, Icon: FolderOpen, gradient: 'from-orange-400/80 to-amber-600/80' },
 ];
 
 const categoryIcons: Record<CategoryKey | 'all', typeof FileText> = {
@@ -221,18 +226,32 @@ const KnowledgeCenter = () => {
                   style={{ animationDelay: `${i * 70}ms` }}
                 >
                   {/* Visual */}
-                  <div className={`relative h-44 bg-gradient-to-br ${g.gradient} overflow-hidden`}>
-                    <div className="absolute inset-0 flex items-center justify-center transition-transform duration-700 group-hover:scale-110">
-                      <g.Icon className="w-20 h-20 text-white/90 drop-shadow-lg" strokeWidth={1.5} />
-                    </div>
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+                  <div
+                    className={`relative h-44 bg-gradient-to-br ${g.gradient} overflow-hidden ${g.image ? 'cursor-zoom-in' : ''}`}
+                    onClick={g.image ? () => setViewGuide(g) : undefined}
+                  >
+                    {g.image ? (
+                      <img
+                        src={g.image}
+                        alt={data.title}
+                        loading="lazy"
+                        width={1024}
+                        height={1024}
+                        className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-125"
+                      />
+                    ) : (
+                      <div className="absolute inset-0 flex items-center justify-center transition-transform duration-700 group-hover:scale-110">
+                        <g.Icon className="w-20 h-20 text-white/90 drop-shadow-lg" strokeWidth={1.5} />
+                      </div>
+                    )}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
                     {/* Type badge */}
-                    <div className={`absolute top-3 ${dir === 'rtl' ? 'right-3' : 'left-3'} flex items-center gap-1 bg-white/95 backdrop-blur px-2.5 py-1 rounded-lg text-xs font-bold text-primary`}>
+                    <div className={`absolute top-3 ${dir === 'rtl' ? 'right-3' : 'left-3'} flex items-center gap-1 bg-white/95 backdrop-blur px-2.5 py-1 rounded-lg text-xs font-bold text-primary pointer-events-none`}>
                       {g.type === 'pdf' ? <FileText className="w-3.5 h-3.5" /> : <ImageIcon className="w-3.5 h-3.5" />}
                       {t.knowledge.types[g.type]}
                     </div>
                     {/* Labels */}
-                    <div className={`absolute top-3 ${dir === 'rtl' ? 'left-3' : 'right-3'} flex flex-col gap-1.5 items-end`}>
+                    <div className={`absolute top-3 ${dir === 'rtl' ? 'left-3' : 'right-3'} flex flex-col gap-1.5 items-end pointer-events-none`}>
                       {g.labels.map(l => (
                         <Badge key={l} className={`${labelStyle(l)} border-0 text-xs`}>
                           {l === 'popular' && <TrendingUp className="w-3 h-3 me-1" />}
@@ -400,10 +419,10 @@ const KnowledgeCenter = () => {
         </DialogContent>
       </Dialog>
 
-      {/* Infographic viewer */}
+      {/* Infographic fullscreen viewer */}
       <Dialog open={!!viewGuide} onOpenChange={(o) => !o && setViewGuide(null)}>
-        <DialogContent className="max-w-2xl rounded-2xl">
-          <DialogHeader>
+        <DialogContent className="max-w-[95vw] md:max-w-4xl w-full max-h-[95vh] p-0 rounded-2xl overflow-hidden bg-background">
+          <DialogHeader className="px-6 pt-6 pb-3">
             <DialogTitle className="text-primary text-xl">
               {viewGuide && t.knowledge.guides[viewGuide.key].title}
             </DialogTitle>
@@ -412,12 +431,21 @@ const KnowledgeCenter = () => {
             </DialogDescription>
           </DialogHeader>
           {viewGuide && (
-            <div className={`relative rounded-xl overflow-hidden bg-gradient-to-br ${viewGuide.gradient} aspect-video flex items-center justify-center`}>
-              <viewGuide.Icon className="w-32 h-32 text-white/90" strokeWidth={1.2} />
-              <div className="absolute bottom-4 left-4 right-4 bg-white/90 backdrop-blur rounded-xl p-3 text-center text-sm text-primary font-semibold">
-                {dir === 'rtl' ? 'محتوى بصري قريباً — تواصل معنا للاستفسار' : 'Contenu visuel — contactez-nous pour plus d\'infos'}
+            viewGuide.image ? (
+              <div className="relative bg-muted/40 flex items-center justify-center max-h-[80vh] overflow-auto">
+                <img
+                  src={viewGuide.image}
+                  alt={t.knowledge.guides[viewGuide.key].title}
+                  width={1024}
+                  height={1024}
+                  className="w-auto max-w-full max-h-[80vh] object-contain"
+                />
               </div>
-            </div>
+            ) : (
+              <div className={`relative rounded-xl overflow-hidden bg-gradient-to-br ${viewGuide.gradient} aspect-video flex items-center justify-center mx-6 mb-6`}>
+                <viewGuide.Icon className="w-32 h-32 text-white/90" strokeWidth={1.2} />
+              </div>
+            )
           )}
         </DialogContent>
       </Dialog>
