@@ -12,6 +12,10 @@ import {
   FileText, Image as ImageIcon, Heart, Plane, Briefcase, GraduationCap, FolderOpen,
   Share2, TrendingUp, Sparkles, Facebook,
 } from 'lucide-react';
+import infographicRetirement from '@/assets/infographic-retirement.jpg';
+import infographicVisa from '@/assets/infographic-visa.jpg';
+import infographicWorker from '@/assets/infographic-worker-rights.jpg';
+import infographicAdmin from '@/assets/infographic-admin-file.jpg';
 
 type CategoryKey = 'social' | 'visa' | 'work' | 'students' | 'admin';
 type ContentType = 'pdf' | 'infographic';
@@ -29,6 +33,7 @@ interface Guide {
   price?: number;
   downloads: number;
   fileUrl?: string; // free PDF (placeholder)
+  image?: string; // infographic preview image
   Icon: typeof FileText;
   gradient: string;
 }
@@ -40,10 +45,10 @@ const guides: Guide[] = [
   { id: 'visaPro', key: 'visaPro', category: 'visa', type: 'pdf', labels: ['paid', 'popular'], price: 5, downloads: 410, Icon: Plane, gradient: 'from-amber-500/80 to-amber-700/80' },
   { id: 'workRights', key: 'workRights', category: 'work', type: 'pdf', labels: ['free'], downloads: 760, fileUrl: '/guides/work-rights.pdf', Icon: Briefcase, gradient: 'from-emerald-500/80 to-emerald-700/80' },
   { id: 'university', key: 'university', category: 'students', type: 'pdf', labels: ['free', 'new'], downloads: 540, fileUrl: '/guides/university.pdf', Icon: GraduationCap, gradient: 'from-violet-500/80 to-violet-700/80' },
-  { id: 'retirementSteps', key: 'retirementSteps', category: 'social', type: 'infographic', labels: ['free', 'popular'], downloads: 1520, Icon: Heart, gradient: 'from-rose-400/80 to-pink-600/80' },
-  { id: 'visaSteps', key: 'visaSteps', category: 'visa', type: 'infographic', labels: ['free'], downloads: 890, Icon: Plane, gradient: 'from-sky-400/80 to-blue-600/80' },
-  { id: 'workerRights', key: 'workerRights', category: 'work', type: 'infographic', labels: ['free', 'new'], downloads: 670, Icon: Briefcase, gradient: 'from-emerald-400/80 to-teal-600/80' },
-  { id: 'adminFile', key: 'adminFile', category: 'admin', type: 'infographic', labels: ['free'], downloads: 430, Icon: FolderOpen, gradient: 'from-orange-400/80 to-amber-600/80' },
+  { id: 'retirementSteps', key: 'retirementSteps', category: 'social', type: 'infographic', labels: ['free', 'popular'], downloads: 1520, image: infographicRetirement, Icon: Heart, gradient: 'from-rose-400/80 to-pink-600/80' },
+  { id: 'visaSteps', key: 'visaSteps', category: 'visa', type: 'infographic', labels: ['free'], downloads: 890, image: infographicVisa, Icon: Plane, gradient: 'from-sky-400/80 to-blue-600/80' },
+  { id: 'workerRights', key: 'workerRights', category: 'work', type: 'infographic', labels: ['free', 'new'], downloads: 670, image: infographicWorker, Icon: Briefcase, gradient: 'from-emerald-400/80 to-teal-600/80' },
+  { id: 'adminFile', key: 'adminFile', category: 'admin', type: 'infographic', labels: ['free'], downloads: 430, image: infographicAdmin, Icon: FolderOpen, gradient: 'from-orange-400/80 to-amber-600/80' },
 ];
 
 const categoryIcons: Record<CategoryKey | 'all', typeof FileText> = {
