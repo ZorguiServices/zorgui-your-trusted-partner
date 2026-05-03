@@ -226,18 +226,32 @@ const KnowledgeCenter = () => {
                   style={{ animationDelay: `${i * 70}ms` }}
                 >
                   {/* Visual */}
-                  <div className={`relative h-44 bg-gradient-to-br ${g.gradient} overflow-hidden`}>
-                    <div className="absolute inset-0 flex items-center justify-center transition-transform duration-700 group-hover:scale-110">
-                      <g.Icon className="w-20 h-20 text-white/90 drop-shadow-lg" strokeWidth={1.5} />
-                    </div>
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+                  <div
+                    className={`relative h-44 bg-gradient-to-br ${g.gradient} overflow-hidden ${g.image ? 'cursor-zoom-in' : ''}`}
+                    onClick={g.image ? () => setViewGuide(g) : undefined}
+                  >
+                    {g.image ? (
+                      <img
+                        src={g.image}
+                        alt={data.title}
+                        loading="lazy"
+                        width={1024}
+                        height={1024}
+                        className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-125"
+                      />
+                    ) : (
+                      <div className="absolute inset-0 flex items-center justify-center transition-transform duration-700 group-hover:scale-110">
+                        <g.Icon className="w-20 h-20 text-white/90 drop-shadow-lg" strokeWidth={1.5} />
+                      </div>
+                    )}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
                     {/* Type badge */}
-                    <div className={`absolute top-3 ${dir === 'rtl' ? 'right-3' : 'left-3'} flex items-center gap-1 bg-white/95 backdrop-blur px-2.5 py-1 rounded-lg text-xs font-bold text-primary`}>
+                    <div className={`absolute top-3 ${dir === 'rtl' ? 'right-3' : 'left-3'} flex items-center gap-1 bg-white/95 backdrop-blur px-2.5 py-1 rounded-lg text-xs font-bold text-primary pointer-events-none`}>
                       {g.type === 'pdf' ? <FileText className="w-3.5 h-3.5" /> : <ImageIcon className="w-3.5 h-3.5" />}
                       {t.knowledge.types[g.type]}
                     </div>
                     {/* Labels */}
-                    <div className={`absolute top-3 ${dir === 'rtl' ? 'left-3' : 'right-3'} flex flex-col gap-1.5 items-end`}>
+                    <div className={`absolute top-3 ${dir === 'rtl' ? 'left-3' : 'right-3'} flex flex-col gap-1.5 items-end pointer-events-none`}>
                       {g.labels.map(l => (
                         <Badge key={l} className={`${labelStyle(l)} border-0 text-xs`}>
                           {l === 'popular' && <TrendingUp className="w-3 h-3 me-1" />}
