@@ -419,10 +419,10 @@ const KnowledgeCenter = () => {
         </DialogContent>
       </Dialog>
 
-      {/* Infographic viewer */}
+      {/* Infographic fullscreen viewer */}
       <Dialog open={!!viewGuide} onOpenChange={(o) => !o && setViewGuide(null)}>
-        <DialogContent className="max-w-2xl rounded-2xl">
-          <DialogHeader>
+        <DialogContent className="max-w-[95vw] md:max-w-4xl w-full max-h-[95vh] p-0 rounded-2xl overflow-hidden bg-background">
+          <DialogHeader className="px-6 pt-6 pb-3">
             <DialogTitle className="text-primary text-xl">
               {viewGuide && t.knowledge.guides[viewGuide.key].title}
             </DialogTitle>
@@ -431,12 +431,21 @@ const KnowledgeCenter = () => {
             </DialogDescription>
           </DialogHeader>
           {viewGuide && (
-            <div className={`relative rounded-xl overflow-hidden bg-gradient-to-br ${viewGuide.gradient} aspect-video flex items-center justify-center`}>
-              <viewGuide.Icon className="w-32 h-32 text-white/90" strokeWidth={1.2} />
-              <div className="absolute bottom-4 left-4 right-4 bg-white/90 backdrop-blur rounded-xl p-3 text-center text-sm text-primary font-semibold">
-                {dir === 'rtl' ? 'محتوى بصري قريباً — تواصل معنا للاستفسار' : 'Contenu visuel — contactez-nous pour plus d\'infos'}
+            viewGuide.image ? (
+              <div className="relative bg-muted/40 flex items-center justify-center max-h-[80vh] overflow-auto">
+                <img
+                  src={viewGuide.image}
+                  alt={t.knowledge.guides[viewGuide.key].title}
+                  width={1024}
+                  height={1024}
+                  className="w-auto max-w-full max-h-[80vh] object-contain"
+                />
               </div>
-            </div>
+            ) : (
+              <div className={`relative rounded-xl overflow-hidden bg-gradient-to-br ${viewGuide.gradient} aspect-video flex items-center justify-center mx-6 mb-6`}>
+                <viewGuide.Icon className="w-32 h-32 text-white/90" strokeWidth={1.2} />
+              </div>
+            )
           )}
         </DialogContent>
       </Dialog>
