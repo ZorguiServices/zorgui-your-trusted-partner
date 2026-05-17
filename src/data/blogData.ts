@@ -33,10 +33,10 @@ export interface BlogPost {
 
 export const categoryLabels: Record<BlogCategory, { ar: string; fr: string; icon: string }> = {
   visa: { ar: 'التأشيرات', fr: 'Visas', icon: '✈️' },
-  work: { ar: 'الشغل', fr: 'Travail', icon: '💼' },
-  social: { ar: 'الضمان الاجتماعي', fr: 'Sécurité Sociale', icon: '🏥' },
+  work: { ar: 'الموارد البشرية', fr: 'Ressources Humaines', icon: '💼' },
+  social: { ar: 'CNSS و التقاعد', fr: 'CNSS & Retraite', icon: '🏥' },
   students: { ar: 'الطلبة', fr: 'Étudiants', icon: '🎓' },
-  admin: { ar: 'نصائح إدارية', fr: 'Conseils Admin', icon: '📄' },
+  admin: { ar: 'خدمات إدارية', fr: 'Services Administratifs', icon: '📄' },
 };
 
 export const categoryImages: Record<BlogCategory, string> = {
