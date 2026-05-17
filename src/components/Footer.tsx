@@ -10,8 +10,8 @@ const Footer = () => {
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-10">
           <div className="text-center md:text-start">
-            <img src={logo} alt="Zorgui Services" className="h-16 w-auto mx-auto md:mx-0 mb-4" />
-            <p className="text-primary-foreground font-bold text-xl mb-2">Zorgui Services</p>
+            <img src={logo} alt="Omega Services" className="h-16 w-auto mx-auto md:mx-0 mb-4" />
+            <p className="text-primary-foreground font-bold text-xl mb-2 tracking-wide">Omega Services</p>
             <p className="text-primary-foreground/60 text-sm">{t.hero.subtitle}</p>
           </div>
 
@@ -57,7 +57,7 @@ const Footer = () => {
         </div>
 
         <div className="border-t border-gold/20 pt-8 text-center text-primary-foreground/50 text-sm">
-          © {new Date().getFullYear()} Zorgui Services. {t.footer.rights}
+          © {new Date().getFullYear()} Omega Services. {t.footer.rights}
         </div>
       </div>
     </footer>

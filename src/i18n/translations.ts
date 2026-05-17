@@ -34,16 +34,16 @@ export const translations = {
     services: {
       title: 'خدماتنا',
       admin: {
-        title: 'خدمات إدارية',
-        items: ['مطالب إدارية', 'شكايات', 'تصاريح', 'أذون على العرائض', 'سجل تجاري'],
+        title: 'خدمات إدارية متنوعة',
+        items: ['مطالب إدارية', 'شكايات', 'تصاريح', 'أذون', 'تسجيلات إدارية', 'خدمات الوثائق'],
       },
       legal: {
-        title: 'خدمات قضائية واجتماعية',
-        items: ['عرائض قاضي الضمان الاجتماعي', 'تعويضات', 'تواكيل'],
+        title: 'خدمات CNSS',
+        items: ['التقاعد', 'الجرايات', 'تعويضات المرض والأمومة', 'حوادث الشغل', 'التصاريح الاجتماعية', 'متابعة الملفات'],
       },
       work: {
-        title: 'خدمات شغلية',
-        items: ['تحرير شكايات قاضي الشغل', 'نزاعات', 'منح الطرد'],
+        title: 'خدمات الموارد البشرية',
+        items: ['إعداد السيرة الذاتية CV', 'عقود العمل', 'شهادات العمل', 'انتدابات', 'استشارات الموارد البشرية', 'ملفات الشغل'],
       },
       social: {
         title: 'الضمان الاجتماعي',
@@ -222,16 +222,16 @@ export const translations = {
     services: {
       title: 'Nos Services',
       admin: {
-        title: 'Services Administratifs',
-        items: ['Demandes administratives', 'Réclamations', 'Déclarations', 'Ordonnances sur requête', 'Registre de commerce'],
+        title: 'Services administratifs variés',
+        items: ['Demandes administratives', 'Réclamations', 'Autorisations', 'Dossiers administratifs', 'Services de documents', 'Déclarations'],
       },
       legal: {
-        title: 'Services Judiciaires et Sociaux',
-        items: ['Requêtes juge sécurité sociale', 'Indemnisations', 'Procurations'],
+        title: 'Services CNSS',
+        items: ['Retraite', 'Pensions', 'Indemnités maladie et maternité', 'Accidents de travail', 'Déclarations sociales', 'Suivi des dossiers'],
       },
       work: {
-        title: 'Services du Travail',
-        items: ['Plaintes prud\'homales', 'Litiges', 'Indemnités de licenciement'],
+        title: 'Ressources Humaines',
+        items: ['Création de CV', 'Contrats de travail', 'Attestations de travail', 'Recrutement', 'Conseils RH', 'Dossiers professionnels'],
       },
       social: {
         title: 'Sécurité Sociale',

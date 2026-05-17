@@ -22,9 +22,9 @@ const HeroSection = () => {
 
       <div className="relative z-10 container mx-auto px-4 text-center">
         <div className="animate-float mb-8">
-          <img src={logo} alt="Zorgui Services" className="mx-auto h-28 md:h-40 w-auto drop-shadow-2xl" />
-          <p className="text-primary-foreground font-bold text-lg md:text-2xl mt-2 drop-shadow-lg tracking-wide">كاتب عمومي</p>
-          <p className="text-primary-foreground/90 font-semibold text-sm md:text-lg drop-shadow-lg">خدمات و استشارات</p>
+          <img src={logo} alt="Omega Services" className="mx-auto h-24 md:h-36 w-auto drop-shadow-2xl" />
+          <p className="text-primary-foreground font-bold text-2xl md:text-4xl mt-3 drop-shadow-lg tracking-[0.2em] uppercase">Omega Services</p>
+          <p className="text-gold font-semibold text-sm md:text-base mt-1 drop-shadow-lg tracking-widest uppercase">Administration • CNSS • RH</p>
         </div>
         
         <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-primary-foreground mb-6 leading-tight max-w-4xl mx-auto min-h-[2.5em]">

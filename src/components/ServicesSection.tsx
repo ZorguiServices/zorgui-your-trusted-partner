@@ -1,21 +1,20 @@
 import { useState } from 'react';
 import { useLang } from '@/i18n/LanguageContext';
 import { useInView } from '@/hooks/useInView';
-import { FileText, Scale, Briefcase, Heart, Plane, Globe, GraduationCap, Printer, Check } from 'lucide-react';
+import { FileText, HeartPulse, Users, Plane, Globe, GraduationCap, Printer, Check } from 'lucide-react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { toast } from 'sonner';
 
 import adminImg from '@/assets/services-admin.jpg';
-import legalImg from '@/assets/services-legal.jpg';
+import cnssImg from '@/assets/services-social.jpg';
 import workImg from '@/assets/services-work.jpg';
-import socialImg from '@/assets/services-social.jpg';
 import visaImg from '@/assets/services-visa.jpg';
 import abroadImg from '@/assets/services-abroad.jpg';
 import studentsImg from '@/assets/services-students.jpg';
 import officeImg from '@/assets/services-office.jpg';
 
-const serviceKeys = ['admin', 'legal', 'work', 'social', 'visa', 'abroad', 'students', 'office'] as const;
+const serviceKeys = ['admin', 'legal', 'work', 'visa', 'abroad', 'students', 'office'] as const;
 type ServiceKey = typeof serviceKeys[number];
 
 const ServicesSection = () => {
@@ -26,9 +25,8 @@ const ServicesSection = () => {
 
   const services = [
     { key: 'admin' as const, icon: FileText, img: adminImg, accent: 'border-blue-500', iconBg: 'bg-blue-500/10' },
-    { key: 'legal' as const, icon: Scale, img: legalImg, accent: 'border-amber-500', iconBg: 'bg-amber-500/10' },
-    { key: 'work' as const, icon: Briefcase, img: workImg, accent: 'border-emerald-500', iconBg: 'bg-emerald-500/10' },
-    { key: 'social' as const, icon: Heart, img: socialImg, accent: 'border-rose-500', iconBg: 'bg-rose-500/10' },
+    { key: 'legal' as const, icon: HeartPulse, img: cnssImg, accent: 'border-rose-500', iconBg: 'bg-rose-500/10' },
+    { key: 'work' as const, icon: Users, img: workImg, accent: 'border-emerald-500', iconBg: 'bg-emerald-500/10' },
     { key: 'visa' as const, icon: Plane, img: visaImg, accent: 'border-sky-500', iconBg: 'bg-sky-500/10' },
     { key: 'abroad' as const, icon: Globe, img: abroadImg, accent: 'border-teal-500', iconBg: 'bg-teal-500/10' },
     { key: 'students' as const, icon: GraduationCap, img: studentsImg, accent: 'border-violet-500', iconBg: 'bg-violet-500/10' },
