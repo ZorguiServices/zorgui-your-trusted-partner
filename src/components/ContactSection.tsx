@@ -16,7 +16,6 @@ const ContactSection = () => {
     t.services.admin.title,
     t.services.legal.title,
     t.services.work.title,
-    t.services.social.title,
     t.services.visa.title,
     t.services.abroad.title,
     t.services.students.title,
