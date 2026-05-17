@@ -47,8 +47,8 @@ const Header = () => {
     }`}>
       <div className="container mx-auto px-4 flex items-center justify-between h-16 md:h-20">
         <a href="#hero" className="flex items-center gap-2 group">
-          <img src={logo} alt="Zorgui Services" className="h-12 md:h-16 w-auto transition-transform group-hover:scale-105" />
-          <span className="text-primary-foreground font-bold text-lg hidden sm:block">Zorgui Services</span>
+          <img src={logo} alt="Omega Services" className="h-10 md:h-12 w-auto transition-transform group-hover:scale-105" />
+          <span className="text-primary-foreground font-bold text-lg hidden sm:block tracking-wide">Omega Services</span>
         </a>
 
         <nav className="hidden lg:flex items-center gap-1">

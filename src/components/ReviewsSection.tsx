@@ -40,7 +40,7 @@ const reviewsData = {
       {
         name: 'Ahmed Ben Ali',
         role: 'Retraité',
-        text: 'Service excellent et rapide. Mon dossier de retraite a été traité en un temps record. Merci beaucoup à l\'équipe Zorgui Services.',
+        text: 'Service excellent et rapide. Mon dossier de retraite a été traité en un temps record. Merci beaucoup à l\'équipe Omega Services.',
         rating: 5,
       },
       {

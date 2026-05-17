@@ -88,7 +88,7 @@ Deno.serve(async (req) => {
         'X-Connection-Api-Key': RESEND_API_KEY,
       },
       body: JSON.stringify({
-        from: 'Zorgui Services <onboarding@resend.dev>',
+        from: 'Omega Services <onboarding@resend.dev>',
         to: ['zorguiweblab@gmail.com'],
         subject,
         html,
